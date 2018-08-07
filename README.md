@@ -1,17 +1,36 @@
 # shine.js
 
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/shine.js.svg?longCache=true&style=for-the-badge
+[npm-url]: https://www.npmjs.com/package/shine.js
+
 A library for pretty shadows.
 
-See the working demo at [http://bigspaceship.github.io/shine.js/](http://bigspaceship.github.io/shine.js/).
+## Get Started
 
-## Get Started [![Inline docs](http://inch-ci.org/github/bigspaceship/shine.js.svg?branch=master)](http://inch-ci.org/github/bigspaceship/shine.js)
-
-Install using bower: `bower install shine` or [download as zip](https://github.com/bigspaceship/shine.js/archive/master.zip) or [fork on GitHub](https://github.com/bigspaceship/shine.js).
-
-Create a Shine.js instance for each DOM element you'd like to shine:
+### ES6
 
 ```javascript
-var shine = new Shine(document.getElementById('my-shine-object'));
+import Shinejs from 'shine.js';
+```
+
+#### UMD
+
+```javascript
+// download files
+use shine.js/dist/shinejs.js
+```
+
+#### Browser
+
+```javascript
+// download files
+<script src="shine.js/dist/shinejs.js"></script>
+```
+
+```javascript
+const shine = new Shinejs.Shine(document.querySelector('#shine'));
 ```
 
 Change the light position and make sure to redraw:
@@ -24,7 +43,7 @@ shine.draw(); // make sure to re-draw
 
 ## Configuration
 
-Each shine instance has a property pointing to an instance of `shinejs.Config`. One config can be shared amongst multiple shine instances.
+Each shine instance has a property pointing to an instance of `Shinejs.Config`. One config can be shared amongst multiple shine instances.
 
 When a config value changes, `shine.draw()` needs to be called to re-draw with the new settings.
 
@@ -36,14 +55,14 @@ shine.config.blur = 0.2;
 shine.draw(); // make sure to re-draw
 ```
 
-Create a shared `shinejs.Config` instance:
+Create a shared `Shinejs.Config` instance:
 
 ```javascript
 // all parameters are optional and can be changed later
-var config = new shinejs.Config({
+var config = new Shinejs.Config({
   numSteps: 4,
   opacity: 0.2,
-  shadowRGB: new shinejs.Color(255, 0, 0)
+  shadowRGB: new Shinejs.Color(255, 0, 0)
 });
 
 // pass the config in the constructor
@@ -59,7 +78,7 @@ shineC.draw(); // make sure to re-draw
 
 ## Shine API
 
-*Note: `Shine` is also mapped to `shinejs.Shine`. Use the long version if `Shine` is already defined.*
+*Note: `Shine` is also mapped to `Shinejs.Shine`. Use the long version if `Shine` is already defined.*
 
 ### Shine(domElement, optConfig, optClassPrefix, optShadowProperty)
 
@@ -68,7 +87,7 @@ The Shine constructor. Instantiate as `new Shine(...)` to create a new instance.
 | Parameter | Type | Description
 | --- | --- | ---
 | **domElement** | `!HTMLElement` | The DOM element to apply the shine effect to.
-| **optConfig** | `?shinejs.Config=` | Optional config instance. If no instance is passed it a new instance with default values will be stored in the `config` property.
+| **optConfig** | `?Shinejs.Config=` | Optional config instance. If no instance is passed it a new instance with default values will be stored in the `config` property.
 | **optClassPrefix** | `?string=` | Optional class prefix that will be applied to all shine DOM elements. Defaults to `shine-`.
 | **optShadowProperty** | `?string=` | Optional property name that the shadow will be applied to. Overrides the automatic detection for use of either `textShadow` or `boxShadow`. The value will be applied as `element.style[shadowProperty] = '...'` and automatically prefixed for legacy browsers (e.g. `MozBoxShadow`).
 
@@ -101,12 +120,12 @@ Removes DOM event listeners to automatically update all properties.
 | Property | Type | Description
 | --- | --- | ---
 | **domElement** | `HTMLElement` | The DOM element to apply the shine effect to.
-| **config** | `shinejs.Config` | Stores all config parameters.
-| **light** | `shinejs.Light` | Stores the light position and intensity.
+| **config** | `Shinejs.Config` | Stores all config parameters.
+| **light** | `Shinejs.Light` | Stores the light position and intensity.
 
-## shinejs.Config API
+## Shinejs.Config API
 
-### shinejs.Config(optSettings)
+### Shinejs.Config(optSettings)
 
 The shine config constructor. Pass an optional settings object from which to read values.
 
@@ -114,7 +133,7 @@ The shine config constructor. Pass an optional settings object from which to rea
 | --- | --- | ---
 | **optSettings** | `?Object=` | An optional object containing config parameters.
 
-### shinejs.Config Properties
+### Shinejs.Config Properties
 
 | Property | Type | Default | Description
 | --- | --- | --- | ---
@@ -125,28 +144,28 @@ The shine config constructor. Pass an optional settings object from which to rea
 |**offsetPow** | `number` | `1.8` | The exponent applied to each step's offset (1.0 = linear offset).
 |**blur** | `number` | `40` | The strength of the shadow blur.
 |**blurPow** | `number` | `1.4` | The exponent applied to each step's blur (1.0 = linear blur).
-|**shadowRGB** | `shinejs.Color` | `new shinejs.Color(0, 0, 0)` | The shadow color in r, g, b (0...255)
+|**shadowRGB** | `Shinejs.Color` | `new Shinejs.Color(0, 0, 0)` | The shadow color in r, g, b (0...255)
 
-## shinejs.Light API
+## Shinejs.Light API
 
-### shinejs.Light(optPosition)
+### Shinejs.Light(optPosition)
 
 The light constructor. Pass an optional position to apply by default.
 
 | Parameter | Type | Description
 | --- | --- | ---
-| **optPosition** | `?shinejs.Point=` | An position. Defaults to `new shinejs.Point(0, 0)`.
+| **optPosition** | `?Shinejs.Point=` | An position. Defaults to `new Shinejs.Point(0, 0)`.
 
-### shinejs.Light Properties
+### Shinejs.Light Properties
 
 | Property | Type | Default | Description
 | --- | --- | --- | ---
-|**position** | `shinejs.Point` | `new shinejs.Point(0, 0)` | The position of this light.
+|**position** | `Shinejs.Point` | `new Shinejs.Point(0, 0)` | The position of this light.
 |**intensity** | `number` | `1.0` | The intensity of this light. Gets multiplied with shadow opacity.
 
-## shinejs.Point API
+## Shinejs.Point API
 
-### shinejs.Point(x, y)
+### Shinejs.Point(x, y)
 
 A 2D point class.
 
@@ -155,17 +174,17 @@ A 2D point class.
 | **x** | `number=` | The x-coordinate. Defaults to `0`.
 | **y** | `number=` | The y-coordinate. Defaults to `0`.
 
-### shinejs.Point Properties
+### Shinejs.Point Properties
 
 | Property | Type | Default | Description
 | --- | --- | --- | ---
 |**x** | `number` | `0` | The x-coordinate.
 |**y** | `number` | `0` | The y-coordinate.
 
-### shinejs.Point.prototype.delta(p)
+### Shinejs.Point.prototype.delta(p)
 
-Returns a new instance of `shinejs.Point` with the x- and y-distance between this instance and the point `p`.
+Returns a new instance of `Shinejs.Point` with the x- and y-distance between this instance and the point `p`.
 
 | Parameter | Type | Description
 | --- | --- | ---
-| **p** | `shinejs.Point` | The point to which to calculate the distance to. Distance will be expressed as `this.x - p.x` and `this.y - p.y`.
+| **p** | `Shinejs.Point` | The point to which to calculate the distance to. Distance will be expressed as `this.x - p.x` and `this.y - p.y`.

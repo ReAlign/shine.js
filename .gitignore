@@ -1,2 +1,5 @@
+.vscode/
+coverage
 node_modules
-bower_components
+*.log
+./package-lock.json
