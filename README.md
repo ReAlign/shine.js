@@ -5,9 +5,11 @@
 [npm-image]: https://img.shields.io/npm/v/shine.js.svg?longCache=true&style=for-the-badge
 [npm-url]: https://www.npmjs.com/package/shine.js
 
-A library for pretty shadows.
+A library for pretty shadows, based on [bigspaceship/shine.js](https://github.com/bigspaceship/shine.js)
 
-## Get Started
+![main img](https://haitao.nos.netease.com/0546ec2d-520b-448b-a0f0-d7641f0ed8f5_931_274.gif)
+
+## Usage
 
 ### ES6
 
