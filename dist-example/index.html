@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Shine.js</title>
+    <meta name="keywords" content="shine,shinejs,shine.js,shadow,css3 text-shadow">
+    <meta name="description" content="a library for pretty shadows, 文字阴影，跟随鼠标变化投影，更漂亮的文字阴影。">
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1 id="headline" class="demo-text">Shine.js</h1>
+
+    <div class="m-github-area">
+        <iframe
+            src="https://ghbtns.com/github-btn.html?user=realign&repo=shine.js&type=star&count=true&size=large"
+            frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+        <iframe
+            src="https://ghbtns.com/github-btn.html?user=realign&repo=shine.js&type=fork&count=true&size=large"
+            frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+    </div>
+
+    <script type="text/javascript" src="./js/shinejs.js"></script>
+    <script type="text/javascript">
+        var shine = new Shinejs.Shine(document.getElementById('headline'));
+
+        function handleMouseMove(event) {
+            shine.light.position.x = event.clientX;
+            shine.light.position.y = event.clientY;
+            shine.draw();
+        }
+
+        window.addEventListener('mousemove', handleMouseMove, false);
+    </script>
+</body>
+
+</html>
