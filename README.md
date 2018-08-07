@@ -9,6 +9,11 @@ A library for pretty shadows, based on [bigspaceship/shine.js](https://github.co
 
 ![main img](https://haitao.nos.netease.com/0546ec2d-520b-448b-a0f0-d7641f0ed8f5_931_274.gif)
 
+## Introduction
+
+* [codesandbox demo](https://codesandbox.io/s/yqx2m65jxx)
+* [more demos](https://github.com/ReAlign/shine.js/tree/master/demos)
+
 ## Usage
 
 ### ES6
